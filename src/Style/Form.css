@@ -1,0 +1,52 @@
+
+
+.form_Box{
+    display: flex;  
+    flex-direction: column;
+    width: 30%;
+    margin: auto;
+    border: 2px solid;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.form_Box h1{
+    text-align: center;
+    border-bottom: 1px solid;
+    margin-bottom: 10px;
+}
+.form_input{
+    margin: 5px;
+    border-radius: 5px;
+    padding: 5px;
+    height: 30px;
+    outline: none;
+    font-size: 20px;
+}
+.form_TextArea{
+    margin: 10px 5px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.form_terms_condition{
+display: flex;
+}
+.form_checkbox{
+    margin-right: 5px;
+}
+
+.form_button{
+    width: 50%;
+    margin: auto;
+    height: 30px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border: none;
+    background-color: black;
+    color: #fff;
+}
+.form_label{
+    margin-left: 10px;
+    font-weight: 700;
+}
