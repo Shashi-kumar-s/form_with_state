@@ -1,52 +1,123 @@
+.form_container {
+    background-image: url(../../public/images/bg2.jpg);
+    background-size: cover;
+    background-position: center;
+    max-width: 100%;
+    max-height: 100%;
+    display: flex;
+    justify-content: center;
+}
 
-
-.form_Box{
-    display: flex;  
+.form_Box {
+    display: flex;
     flex-direction: column;
     width: 30%;
-    margin: auto;
     border: 2px solid;
     padding: 10px;
     border-radius: 10px;
+    background-color: #fff;
+    margin: 10px 0;
 }
 
-.form_Box h1{
+.form_Box h1 {
     text-align: center;
     border-bottom: 1px solid;
     margin-bottom: 10px;
 }
-.form_input{
+
+.form_input {
     margin: 5px;
     border-radius: 5px;
     padding: 5px;
     height: 30px;
-    outline: none;
-    font-size: 20px;
+    font-size: 15px;
+    outline-color: none;
+    border: 1px solid gray;
+    caret-color: rgb(83, 153, 219);
 }
-.form_TextArea{
+
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.form_input:focus-visible {
+    outline-color: green;
+}
+
+.form_TextArea {
     margin: 10px 5px;
     border-radius: 10px;
     padding: 10px;
+    resize: none;
 }
 
-.form_terms_condition{
-display: flex;
-}
-.form_checkbox{
-    margin-right: 5px;
+.form_TextArea:focus-visible {
+    outline-color: green;
 }
 
-.form_button{
+.form_terms_condition {
+    display: flex;
+    align-items: center;
+}
+
+.form_checkbox {
+    margin: 0px 7px;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+}
+
+.form_button {
     width: 50%;
     margin: auto;
     height: 30px;
     margin-top: 10px;
     border-radius: 8px;
-    border: none;
-    background-color: black;
+    background-color: purple;
     color: #fff;
+    cursor: pointer;
+    border: none;
+    font-size: 17px;
+    font-weight: 600;
 }
-.form_label{
+
+.form_button:hover {
+    color: #fff;
+    background: rgb(126, 23, 126);
+    border: 1px solid #fff;
+
+}
+
+.form_label {
     margin-left: 10px;
-    font-weight: 700;
+    font-weight: 600;
+    color: gray;
 }
+label:after {
+    content:" *";
+    color: red;
+  }
+ .error{
+    color: red;
+    font-size: 12px;
+    text-align: center;
+ }
+ input:invalid ~span{
+   display: block;
+ }
+ @media screen and (max-width:460px){
+    .form_Box{width: 90%;}
+    
+ }
+ @media only screen and (max-width: 767px) and (min-width: 461px) {
+    .form_Box{width: 60%;}
+ }
+ @media only screen and (max-width:960px) and (min-width:768px) {
+    .form_Box{width: 50%;}
+ }
+ 
+ @media only screen and (max-width:1120px) and (min-width:961px) {
+    .form_Box{width: 40%;}
+ }
+ 
