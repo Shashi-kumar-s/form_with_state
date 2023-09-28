@@ -103,7 +103,9 @@ label:after {
     font-size: 12px;
     text-align: center;
  }
-
+ input:invalid ~span{
+   display: block;
+ }
  @media screen and (max-width:460px){
     .form_Box{width: 90%;}
     

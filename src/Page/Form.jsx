@@ -4,6 +4,7 @@ import "../Style/Form.css"
 import TextArea from "../component/textArea/TextArea"
 import FormButton from "../component/button/FormButton"
 import { inputs } from "../utilities/inputDetails/InputDetails"
+import SelectOption from "../component/selectOption/SelectOption"
 
 const Form = () => {
   const [data, setData] = useState({
@@ -16,10 +17,10 @@ const Form = () => {
     Address: "",
     Message: "",
     checkbox: "",
+    role: "",
   })
 
-  const [allData, setAllData] = useState([])
-  const [validationMessages, setValidationMessages] = useState([])
+  const [errorData, setErrorData] = useState([])
 
   const handleChange = (e) => {
     setData({ ...data, [e.target.name]: e.target.value })
@@ -27,42 +28,87 @@ const Form = () => {
 
   const handleAdd = (e) => {
     e.preventDefault()
-    validateForm()
-    setAllData(data)
-    console.log(allData)
+    const keys = Object.keys(data)
+    for (let i = 0; i < keys.length; i++) {
+      setTimeout(() => {
+        handleOnBlur(keys[i])
+      },1000);
+    }
   }
 
-  const validateForm = () => {
-    const {
-      firstName,
-      middleName,
-      lastName,
-      email,
-      age,
-      phone,
-    } = data
+  console.log(errorData,"------------------")
 
-    setValidationMessages([])
-    let messages = []
-    if (!firstName) {
-      messages.push("first name is required")
+  const handleOnBlur = (e) => {
+    // console.log("eeeeeeeeeeeeee", e)
+    switch (e) {
+      case "firstName":
+        if (data.firstName.trim() === "") {
+          console.log("fffffffffffirstname", e)
+          setErrorData([...errorData, e])
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "middleName":
+        if (data.middleName.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("mmmmmmmmmmmiddlename")
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "lastName":
+        if (data.lastName.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("lllllllllllastname")
+          console.log("fghsdfhd", e)
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "email":
+        if (data.email.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("eeeeeeeeeeeeemail")
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "phone":
+        if (data.phone.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("ppppppppppppppppphone")
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "age":
+        if (data.age.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("aaaaaaaage")
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      case "role":
+        if (data.role.trim() === "") {
+          setErrorData([...errorData, e])
+          console.log("rrrrrrrrole")
+        } else {
+          setErrorData(errorData.filter((ele) => ele !== e))
+        }
+        break
+
+      default:
+        e
+        break
     }
-    if (!middleName) {
-      messages.push("middle name is required")
-    }
-    if (!lastName) {
-      messages.push("middle name is required")
-    }
-    if (!email) {
-      messages.push("email is invalid")
-    }
-    if (!age) {
-      messages.push("age is required")
-    }
-    if (!phone) {
-      messages.push("phone is required")
-    }
-    setValidationMessages(messages)
   }
 
   return (
@@ -75,19 +121,16 @@ const Form = () => {
               key={input.id}
               {...input}
               value={data[input.name]}
+              nam={input.name}
               onchange={handleChange}
               className={"form_input"}
-              validationMessages={validationMessages}
+              onBlur={() => handleOnBlur(input.name)}
+              error={errorData.includes(input.name)}
+              pattern={input.pattern}
             />
           )
         })}
-        <label htmlFor="role" className="form_label">
-          Role
-        </label>
-        <select name="role" className="form_input" onChange={handleChange}>
-          <option value="User">user</option>
-          <option value="Admin">Admin</option>
-        </select>
+        <SelectOption onchange={handleChange} />
         <TextArea
           name={"Address"}
           row={"2"}
